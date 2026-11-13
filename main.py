@@ -96,6 +96,21 @@ def initialize_statistics():
         "process_statistics": {}
     }
 
+def initialize_processes(trace_files):
+    processes = []
+
+    for index, trace_file in enumerate(trace_files):
+        process = {
+            "process_id": index + 1,
+            "trace_file": trace_file,
+            "instructions_processed": 0,
+            "finished": False
+        }
+
+        processes.append(process)
+
+    return processes
+
 def run_simulation(args):
     # calculate Milestone 1 values and write one formatted output file
     inputs = {
