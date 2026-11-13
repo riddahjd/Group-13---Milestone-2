@@ -1,4 +1,4 @@
-# MILESTONE 1
+# MILESTONE 2
 
 import argparse
 
@@ -28,7 +28,7 @@ def parse_time_slice(value):
 
 def build_parser():
     parser = argparse.ArgumentParser(
-        description = "Calculate the Milestone 1 cache and physical-memory values."
+        description = "Simulate virtual memory and calculate cache and physical-memory values."
     )
 
     parser.add_argument("-s", type=int, required=True, metavar="KB",
@@ -51,7 +51,7 @@ def build_parser():
     parser.add_argument("--team", default="XX",
                         help="team number used in the output filename (default: XX)")
     parser.add_argument("--run", type=int, choices=(1, 2, 3), default=1,
-                        help="Milestone 1 output run number: 1, 2, or 3 (default: 1)")
+                        help="Simulation output run number: 1, 2, or 3 (default: 1)")
     parser.add_argument("--output-dir", default="results",
                         help="folder for the generated output file (default: results)")
 
@@ -87,6 +87,14 @@ def validate_arguments(parser, args):
     if not args.team.strip():
         parser.error("--team cannot be blank")
 
+def initialize_statistics():
+    return {
+        "virtual_pages_mapped": 0,
+        "page_table_hits": 0,
+        "pages_from_free": 0,
+        "total_page_faults": 0,
+        "process_statistics": {}
+    }
 
 def run_simulation(args):
     # calculate Milestone 1 values and write one formatted output file
