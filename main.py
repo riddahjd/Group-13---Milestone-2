@@ -96,13 +96,14 @@ def initialize_statistics():
         "process_statistics": {}
     }
 
-def initialize_processes(trace_files):
+def initialize_processes(trace_files, read_trace):
     processes = []
 
     for index, trace_file in enumerate(trace_files):
         process = {
             "process_id": index + 1,
             "trace_file": trace_file,
+            "instruction_iterator": iter(read_trace(trace_file)),
             "instructions_processed": 0,
             "finished": False
         }
