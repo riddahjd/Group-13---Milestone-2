@@ -111,6 +111,37 @@ def initialize_processes(trace_files):
 
     return processes
 
+def run_scheduler(processes, instructions_per_time_slice, process_instruction):
+
+    while any(not process["finished"] for process in processes):
+
+        for process in processes:
+
+            if process["finished"]:
+                continue
+
+            instructions_processed = 0
+
+            while (
+                not process["finished"]
+                and (
+                    instructions_per_time_slice == -1
+                    or instructions_processed < instructions_per_time_slice
+                )
+            ):
+
+                try:
+                    instruction = next(process["instruction_iterator"])
+
+                except StopIteration:
+                    process["finished"] = True
+                    break
+
+                process_instruction(process, instruction)
+
+                process["instructions_processed"] += 1
+                instructions_processed += 1
+
 def run_simulation(args):
     # calculate Milestone 1 values and write one formatted output file
     inputs = {
