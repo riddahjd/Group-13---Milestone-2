@@ -1,0 +1,55 @@
+MILESTONE #1: Input Parameters and Calculated Values
+Cache Simulator - CS 3853 – Team #13
+Trace File(s):
+   A-9_new_trunk.trc
+   A-10_new_1.5_a.pdf.trc
+   Corruption_1_1.5.pdf.trc
+***** Cache Input Parameters *****
+
+Cache Size:                64 KB
+Block Size:                16 bytes
+Associativity:             1
+Replacement Policy:        Round Robin
+Physical Memory:           128 MB
+Percent Memory Used by System: 95.0%
+Instructions / Time Slice: 50
+
+***** Cache Calculated Values *****
+
+Total # Blocks:            4096
+Tag Size:                  11 bits
+Index Size:                12 bits
+Total # Rows:              4096
+Overhead Size:             6144 bytes
+Implementation Memory Size: 70.00 KB (71680 bytes)
+Cost:                      $4.90 @ $0.07 per KB
+
+***** Physical Memory Calculated Values *****
+
+Number of Physical Pages:  32768
+Number of Pages for System: 31129
+Size of Page Table Entry:  16 bits
+Total RAM for Page Table(s): 3145728 bytes
+MILESTONE 2 - VIRTUAL MEMORY RESULTS
+-------------------------------------
+Physical Pages Used By SYSTEM: 31129
+Pages Available to User: 1639
+Virtual Pages Mapped: 726480
+Page Table Hits: 725273
+Pages from Free: 1207
+Total Page Faults: 0
+
+PAGE TABLE USAGE PER PROCESS
+----------------------------
+Process 1:
+Used Page Table Entries: 337
+Page Table Wasted: 1047902.00 bytes
+
+Process 2:
+Used Page Table Entries: 567
+Page Table Wasted: 1047442.00 bytes
+
+Process 3:
+Used Page Table Entries: 303
+Page Table Wasted: 1047970.00 bytes
+
