@@ -1,5 +1,6 @@
 import os
 
+
 def write_results(team_number, trace_files, inputs, cache_results, memory_results, run_number, output_directory):
     policy_map = {"RR": "Round Robin", "RND": "Random"}
     display_policy = policy_map.get(inputs["replacement_policy"], inputs["replacement_policy"])
@@ -9,10 +10,10 @@ def write_results(team_number, trace_files, inputs, cache_results, memory_result
         f"Cache Simulator - CS 3853 – Team #{team_number}",
         "Trace File(s):"
     ]
-    
+
     for file in trace_files:
         lines.append(f"   {file}")
-        
+
     lines.extend([
         "***** Cache Input Parameters *****",
         "",
@@ -39,17 +40,16 @@ def write_results(team_number, trace_files, inputs, cache_results, memory_result
         f"Number of Physical Pages:  {memory_results['total_physical_pages']}",
         f"Number of Pages for System: {memory_results['os_reserved_pages']}",
         f"Size of Page Table Entry:  {memory_results['page_table_entry_bits']} bits",
-        f"Total RAM for Page Table(s): {memory_results['page_table_ram_bytes']} bytes"
+        f"Total RAM for Page Table(s): {memory_results['page_table_ram_bytes']} bytes",
     ])
 
     output_content = "\n".join(lines)
-    print(output_content)
 
     os.makedirs(output_directory, exist_ok=True)
-    filename = f"Team_{team_number}_Sim_{run_number}_M#1.txt"
+    filename = f"Team_{team_number}_Sim_{run_number}_M#2.txt"
     filepath = os.path.join(output_directory, filename)
-    
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(output_content)
+
+    with open(filepath, "w", encoding="utf-8") as file:
+        file.write(output_content)
 
     return filepath
